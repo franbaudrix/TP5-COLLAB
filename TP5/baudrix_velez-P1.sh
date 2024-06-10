@@ -1,19 +1,26 @@
 numero_random=$(((RANDOM % 100) + 1))
-
+iterador=5
 while true;
 do
 
-echo $numero_random
 echo "Ingrese un numero para intentar adivinar el que estoy pensando: "
 read numero_adivinado
+if [ "$iterador" -eq 1 ]; then
+	echo -e "Perdiste! Te quedaste sin turnos\n"
+	break
+elif [ "$numero_adivinado" -gt "$numero_random" ]; then
+	echo -e  "---El numero que estoy pensando es menor a $numero_adivinado---"
+	((iterador--))
+        echo -e "--Turnos restantes: $iterador--\n"
 
-if [ "$numero_adivinado" -gt "$numero_random" ]; then
-        echo "El numero ingresado es mayor al que estoy pensando"
-    elif [ "$numero_adivinado" -lt "$numero_random" ]; then
-        echo "El numero ingresado es menor al que estoy pensando"
-    else
-        echo "Felicidades! Lo adivinaste!"
-        break
+elif [ "$numero_adivinado" -lt "$numero_random" ]; then
+	echo -e "---El numero que estoy pensando es mayor a $numero_adivinado---"
+	((iterador--))
+        echo -e "--Turnos restantes: $iterador--\n"
+
+else
+	echo -e "---Felicidades! Lo adivinaste!---\n"
+        	break
 fi
 
 done
