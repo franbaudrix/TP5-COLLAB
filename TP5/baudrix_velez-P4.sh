@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 echo -n "Ingrese 1 para iniciar el cronometro: "
 read opcion
 
@@ -21,3 +22,7 @@ while [ "$opcion" -eq 1 ]; do
 		opcion=1
 	fi
 done
+=======
+read texto
+echo "nose coso $texto"
+>>>>>>> a3a64d964389a8ebd33be54e1889ae2a498f5acf
