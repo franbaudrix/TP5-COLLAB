@@ -23,10 +23,20 @@ if [ "$opcion" -eq 1 ]; then
 	read numero1suma
 	echo -n "Ingresa otro numero para sumar: "
 	read numero2suma
-	echo ""
-	echo -n "--> $numero1suma + $numero2suma = "
-	echo "scale =5 ; $numero1suma + $numero2suma" | bc
-	echo ""
+	total_suma=$(echo "scale=5; $numero1suma + $numero2suma" | bc)
+	if [ "$(echo "$numero2suma" | bc)" != "$numero2suma" ]; then
+		echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+		echo ""
+	elif [ "$(echo "$numero1suma" | bc)" != "$numero1suma" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+	else
+		echo ""
+		echo "--> $numero1suma + $numero2suma = $total_suma"
+		echo ""
+	fi
 	while true; do
 		echo -n "Ingresa x para volver al menu: "
 		read -r -n 2 volver
@@ -45,10 +55,20 @@ elif [ "$opcion" -eq 2 ]; then
         read numero1resta
         echo -n "Ingresa el numero que le quieres restar: "
         read numero2resta
-	echo ""
-        echo -n "--> $numero1resta - $numero2resta = "
-	echo "scale =2 ; $numero1resta - $numero2resta" | bc
-	echo ""
+	total_resta=$(echo "scale=5; $numero1resta - $numero2resta" | bc)
+        if [ "$(echo "$numero2resta" | bc)" != "$numero2resta" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+	elif [ "$(echo "$numero1resta" | bc)" != "$numero1resta" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+        else
+                echo ""
+                echo "--> $numero1resta - $numero2resta = $total_resta"
+                echo ""
+	fi
         while true; do
                 echo -n "Ingresa x para volver al menu: "
                 read -r -n 2 volver
@@ -56,7 +76,7 @@ elif [ "$opcion" -eq 2 ]; then
                         break
                 else
                         echo "Opcion invalida, para volver al menu ingresa x"
-                fi 
+                fi
         done
 elif [ "$opcion" -eq 3 ]; then
 	clear
@@ -67,10 +87,20 @@ elif [ "$opcion" -eq 3 ]; then
         read numero1multi
         echo -n "Ingresa el numero por el que lo quieres multiplicar: "
         read numero2multi
-	echo ""
-        echo -n "--> $numero1multi x $numero2multi = "
-	echo "scale =5 ; $numero1multi * $numero2multi" | bc
-        echo ""
+	total_multi=$(echo "scale=5; $numero1multi * $numero2multi" | bc)
+        if [ "$(echo "$numero2multi" | bc)" != "$numero2multi" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+	elif [ "$(echo "$numero1multi" | bc)" != "$numero1multi" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+        else
+                echo ""
+                echo "--> $numero1multi x $numero2multi = $total_multi"
+                echo ""
+        fi
 	while true; do
                 echo -n "Ingresa x para volver al menu: "
                 read -r -n 2 volver
@@ -90,7 +120,20 @@ elif [ "$opcion" -eq 4 ]; then
         echo -n "Ingresa el denominador de la division: "
         read numero2divi
 	echo ""
-	if [ "$numero2divi" -eq 0 ]; then
+        if [ "$(echo "$numero2divi" | bc)" != "$numero2divi" ]; then
+                echo ""
+                echo "Ingresaste un valor incorrecto, solo podes ingresar numeros!"
+                echo ""
+		while true; do
+                        echo -n "Ingresa x para volver al menu: "
+                        read -r -n 2 volver
+                        if [[ $volver == $'x' ]]; then
+                                break
+                        else
+                                echo "Opcion invalida, para volver al menu ingresa x"
+                        fi 
+                done
+	elif [ "$numero2divi" -eq 0 ]; then
 		echo -n "Error! No es posible dividir por 0"
 		while true; do
                 	echo -n "Ingresa x para volver al menu: "
@@ -102,9 +145,10 @@ elif [ "$opcion" -eq 4 ]; then
                 	fi 
        		done
 	else
-        	echo -n "--> $numero1divi / $numero2divi = "
-		echo "scale =10 ; $numero1divi / $numero2divi" | bc
-		echo "" 
+		total_divi=$(echo "scale=5; $numero1divi / $numero2divi" | bc)
+              	echo ""
+               	echo "--> $numero1divi / $numero2divi = $total_divi"
+               	echo ""
         	while true; do
                 	echo -n "Ingresa x para volver al menu: "
                 	read -r -n 2 volver
