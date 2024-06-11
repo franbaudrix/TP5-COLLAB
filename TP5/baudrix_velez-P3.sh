@@ -23,6 +23,7 @@ if [ "$opcion" -eq 1 ]; then
 	read numero1suma
 	echo -n "Ingresa otro numero para sumar: "
 	read numero2suma
+	echo ""
 	echo -n "--> $numero1suma + $numero2suma = "
 	echo "scale =5 ; $numero1suma + $numero2suma" | bc
 	echo ""
@@ -34,7 +35,6 @@ if [ "$opcion" -eq 1 ]; then
 		else
 			echo "Opcion invalida, para volver al menu ingresa x"
 		fi 
-		echo "toy afuera pero abajo del loop"
 	done
 elif [ "$opcion" -eq 2 ]; then 
 	clear
@@ -46,22 +46,18 @@ elif [ "$opcion" -eq 2 ]; then
         echo -n "Ingresa el numero que le quieres restar: "
         read numero2resta
 	echo ""
-        echo -n "$numero1resta - $numero2resta = "
+        echo -n "--> $numero1resta - $numero2resta = "
 	echo "scale =2 ; $numero1resta - $numero2resta" | bc
 	echo ""
-        echo -n "Volviendo al menu en: "
-        for (( i=3; i>-1; i-- )); do
-                sleep 1
-                echo -n "$i"
-                if [ "$i" -eq 3 ]; then
-                        echo -n "..."
-                elif [ "$i" -eq 2 ]; then
-                        echo -n ".."
-                elif [ "$i" -eq 1 ]; then
-                        echo -n "."
-                fi
+        while true; do
+                echo -n "Ingresa x para volver al menu: "
+                read -r -n 2 volver
+                if [[ $volver == $'x' ]]; then
+                        break
+                else
+                        echo "Opcion invalida, para volver al menu ingresa x"
+                fi 
         done
- 
 elif [ "$opcion" -eq 3 ]; then
 	clear
 	echo "###############################"
@@ -72,22 +68,18 @@ elif [ "$opcion" -eq 3 ]; then
         echo -n "Ingresa el numero por el que lo quieres multiplicar: "
         read numero2multi
 	echo ""
-        echo -n "$numero1multi x $numero2multi = "
+        echo -n "--> $numero1multi x $numero2multi = "
 	echo "scale =5 ; $numero1multi * $numero2multi" | bc
         echo ""
-	echo -n "Volviendo al menu en: "
-        for (( i=3; i>-1; i-- )); do
-                sleep 1
-                echo -n "$i"
-                if [ "$i" -eq 3 ]; then
-                        echo -n "..."
-                elif [ "$i" -eq 2 ]; then
-                        echo -n ".."
-                elif [ "$i" -eq 1 ]; then
-                        echo -n "."
-                fi
-        done
- 
+	while true; do
+                echo -n "Ingresa x para volver al menu: "
+                read -r -n 2 volver
+                if [[ $volver == $'x' ]]; then
+                        break
+                else
+                        echo "Opcion invalida, para volver al menu ingresa x"
+                fi 
+        done 
 elif [ "$opcion" -eq 4 ]; then 
 	clear
 	echo "###############################"
@@ -99,37 +91,31 @@ elif [ "$opcion" -eq 4 ]; then
         read numero2divi
 	echo ""
 	if [ "$numero2divi" -eq 0 ]; then
-		echo -n "Error! Volviendo al menu en: "
-                for (( i=3; i>0; i-- )); do
-                        sleep 1
-                        echo -n "$i"
-                        if [ "$i" -eq 3 ]; then
-                                echo -n "..."
-                        elif [ "$i" -eq 2 ]; then
-                                echo -n ".."
-                        elif [ "$i" -eq 1 ]; then
-                                echo -n "."
-                        fi
-                done
+		echo -n "Error! No es posible dividir por 0"
+		while true; do
+                	echo -n "Ingresa x para volver al menu: "
+                	read -r -n 2 volver
+                	if [[ $volver == $'x' ]]; then
+                        	break
+                	else
+                        	echo "Opcion invalida, para volver al menu ingresa x"
+                	fi 
+       		done
 	else
-        	echo -n "$numero1divi / $numero2divi = "
-		echo "scale =2 ; $numero1divi / $numero2divi" | bc
+        	echo -n "--> $numero1divi / $numero2divi = "
+		echo "scale =10 ; $numero1divi / $numero2divi" | bc
 		echo "" 
-        	echo -n "Volviendo al menu en: "
-        	for (( i=3; i>-1; i-- )); do
-                	sleep 1
-                	echo -n "$i"
-                	if [ "$i" -eq 3 ]; then
-                       		echo -n "..."
-                	elif [ "$i" -eq 2 ]; then
-                        	echo -n ".."
-                	elif [ "$i" -eq 1 ]; then
-                        	echo -n "."
-                	fi
+        	while true; do
+                	echo -n "Ingresa x para volver al menu: "
+                	read -r -n 2 volver
+                	if [[ $volver == $'x' ]]; then
+                        	break
+                	else
+                        	echo "Opcion invalida, para volver al menu ingresa x"
+                	fi 
         	done
- 
 	fi
-elif [ "$opcion" -eq 0 ]; then 
+elif [ "$opcion" -eq 0 ]; then
 	clear
 	break;
 fi
