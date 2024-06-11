@@ -24,20 +24,17 @@ if [ "$opcion" -eq 1 ]; then
 	echo -n "Ingresa otro numero para sumar: "
 	read numero2suma
 	echo -n "--> $numero1suma + $numero2suma = "
-	echo ""
 	echo "scale =5 ; $numero1suma + $numero2suma" | bc
 	echo ""
-	echo -n "Volviendo al menu en: "
-	for (( i=3; i>-1; i-- )); do
-		sleep 1
-    		echo -n "$i"
-		if [ "$i" -eq 3 ]; then
-			echo -n "..."
-		elif [ "$i" -eq 2 ]; then
-                        echo -n ".."
-		elif [ "$i" -eq 1 ]; then
-                        echo -n "."
-		fi
+	while true; do
+		echo -n "Ingresa x para volver al menu: "
+		read -r -n 2 volver
+		if [[ $volver == $'x' ]]; then
+			break
+		else
+			echo "Opcion invalida, para volver al menu ingresa x"
+		fi 
+		echo "toy afuera pero abajo del loop"
 	done
 elif [ "$opcion" -eq 2 ]; then 
 	clear

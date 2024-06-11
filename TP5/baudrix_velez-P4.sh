@@ -1,28 +1,14 @@
-<<<<<<< HEAD
-echo -n "Ingrese 1 para iniciar el cronometro: "
-read opcion
+filepath="/home/karim/Escritorio/TP5-COLLAB/TP5/textoDePrueba"
 
-cont=0;
+letras=$(wc -m < "$filepath")
 
-while [ "$opcion" -eq 1 ]; do
-	clear
-	let cont=cont+1
-	echo "Cronometro: $cont"
-	echo -n "Si desea parar el cronometro, ingrese 2, para reiniciarlo ingrese 3: "
-	read -t 1 opcion
-	if [[ "$opcion" =~ ^[0-9]+$ ]]; then
-	 	if [ "$opcion" -eq 3 ]; then
-                	let cont=0
-                	opcion=1
-        	fi
-	fi
+echo "El archivo textoDePrueba tiene $letras letras"
 
-	#comprueba si lo ingresado es un numero, si no lo es entonces le asigna 1 para que continue	
-	if ! [[ "$opcion" =~ ^[0-9]+$ ]] then
-		opcion=1
-	fi
-done
-=======
-read texto
-echo "nose coso $texto"
->>>>>>> a3a64d964389a8ebd33be54e1889ae2a498f5acf
+palabras=$(wc -w < "$filepath")
+
+echo "El archivo textoDePrueba tiene $palabras palabras"
+
+lineas=$(wc -l < "$filepath")
+
+echo "El archivo textoDePrueba tiene $lineas lineas"
+
