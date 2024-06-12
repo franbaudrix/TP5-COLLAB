@@ -50,7 +50,7 @@ VIENTO_DIR=$(echo "$VIENTO_DIR" | sed 's/"//g')
 clear
 #Primero definimos una variable para ser el espacio constante que va a haber entre los datos y asi la segunda variable de espacio se va a adecuar a esta siempre y asi el espacio es el mismo
 espacio_entre_datos1=15
-espacio_total=$(( 15 + ${#TEMPERATURA} + $espacio_entre_datos1 )) #espacio_entre_datos es el espacio que queremos que haya siempre entre un dato y otro y 14 es el tamano constante de la palabra temperatura y un espacio
+espacio_total=$(( 15 + ${#TEMPERATURA} + $espacio_entre_datos1 )) #espacio_entre_datos es el espacio que queremos que haya siempre entre un dato y otro y 15 es el tamano constante de la palabra temperatura y un espacio
  
 
 #for loop usado para definir la distancia entre temperatura y direccion del viento
