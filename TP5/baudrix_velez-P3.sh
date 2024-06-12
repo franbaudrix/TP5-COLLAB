@@ -105,7 +105,7 @@ elif [ "$opcion" -eq 4 ]; then
         hacer_cuenta_y_error_handling operacion titulo
 elif [ "$opcion" -eq 5 ]; then
 	zenity --info --no-wrap \
-               --text="MANUAL DE USO\n\n Luego de seleccionar la operacion deseada, siga estos pasos:\n\n 1. Ingrese el primer numero y presione enter. \n\n 2. Ingrese el segundo numero y presione enter nuevamente. \n\n 3. El resultado de su cuenta se mostrara por pantalla. \n\n 4. Para volver al menu principal, presiente la letra X." 
+               --text="MANUAL DE USO\n\n Luego de seleccionar la operacion deseada, siga estos pasos:\n\n 1. Ingrese el primer numero y presione enter. \n\n 2. Ingrese el segundo numero y presione enter nuevamente. \n\n 3. El resultado de su cuenta se mostrara en pantalla. \n\n 4. Para volver al menu principal, presione la letra X." 
 elif [ "$opcion" -eq 0 ]; then
 	clear
 	break;
