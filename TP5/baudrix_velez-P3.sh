@@ -19,13 +19,15 @@ hacer_cuenta_y_error_handling() {
 	local titulo="$titulo"
 	clear
         graphics "$titulo"
+	echo ""
         read num1
-
+	echo ""
         clear
-        cad=$num1$operacion
+        cad="$num1 $operacion "
         graphics "$titulo"
+	echo ""
         read -p "$cad" num2
-
+	echo ""
 	if [[ $operacion = "/" && $num2 = 0 ]]; then
 		div_cero
 	elif [ "$(echo "$num2" | bc)" != "$num2" ]; then
@@ -38,8 +40,9 @@ hacer_cuenta_y_error_handling() {
 		clear
         	graphics "$titulo"
         	total=$(echo "scale=5; $num1 $operacion $num2" | bc)
+		echo ""
         	echo "$num1 $operacion $num2 = $total"
-
+		echo ""
         	while true; do
                 	echo -n "Ingresa x para volver al menu: "
                 	read -r -n 2 volver
