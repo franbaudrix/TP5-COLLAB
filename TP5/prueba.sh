@@ -1,8 +1,4 @@
-if zenity --entry \
---title="Añadir un perfil nuevo" \
---text="Escriba el nombre del perfil nuevo:" \
---entry-text "NewProfile"
-  then ciudad ="$?"
-  else echo "No ha especificado ningún nombre"
-fi
-echo "$ciudad"
+
+zenity --error --no-wrap --help-error --text="Ingresaste un valor incorrecto,\nsolo podes ingresar numeros!"
+
+echo "hola"

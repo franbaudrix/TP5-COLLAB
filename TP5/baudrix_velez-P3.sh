@@ -31,12 +31,10 @@ hacer_cuenta_y_error_handling() {
 	if [[ $operacion = "/" && $num2 = 0 ]]; then
 		div_cero
 	elif [ "$(echo "$num2" | bc)" != "$num2" ]; then
-                zenity --error --no-wrap \
-			--text="Ingresaste un valor incorrecto,\nsolo podes ingresar numeros!"
+                zenity --error --no-wrap --text="Ingresaste un valor incorrecto,\nsolo podes ingresar numeros!"
         elif [ "$(echo "$num1" | bc)" != "$num1" ]; then
-		zenity --error --no-wrap \
-			--text="Ingresaste un valor incorrecto,\nsolo podes ingresar numeros!"
-        else
+		zenity --error --no-wrap --text="Ingresaste un valor incorrecto,\nsolo podes ingresar numeros!"
+	else
 		clear
         	graphics "$titulo"
         	total=$(echo "scale=5; $num1 $operacion $num2" | bc)
@@ -46,7 +44,7 @@ hacer_cuenta_y_error_handling() {
         	while true; do
                 	echo -n "Ingresa x para volver al menu: "
                 	read -r -n 2 volver
-                	if [[ $volver == $'x' ]]; then
+                	if [[ $volver == $'x' || $volver == $'X' ]]; then
                         	break
                 	else
                         	echo "Opcion invalida, para volver al menu ingresa x"
